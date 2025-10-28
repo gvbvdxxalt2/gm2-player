@@ -6,13 +6,16 @@
   "author": "gvbvdxx",
   "license": "MIT",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack --progress",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --progress",
     "testbuild": "http-server --port=6837 ./dist"
   },
   "dependencies": {
 	"scratch-vm": "git+https://github.com/gvbmod/scratch-vm.git",
-    "arraybuffer-loader": "^1.0.6",
+  "scratch-render": "git+https://github.com/gvbmod/scratch-render.git",
+  "scratch-audio": "git+https://github.com/gvbmod/scratch-audio.git",
+  "scratch-svg-renderer": "git+https://github.com/gvbmod/scratch-svg-renderer.git",
+  "arraybuffer-loader": "^1.0.6",
     "autoprefixer": "^9.0.1",
     "base64-loader": "1.0.0",
     "bowser": "1.9.4",
