@@ -95,7 +95,7 @@ GM2Player = {
     }
     if (GM2Player.options.cloudProvider && GM2Player.runtime.vm) {
       try {
-        vm.setCloudProvider(GM2Player.options.cloudProvider);
+        GM2Player.runtime.vm.setCloudProvider(GM2Player.options.cloudProvider);
       } catch (e) {
         console.warn("[GM2Player]: Failed to set specified cloud provider.");
       }
@@ -305,7 +305,7 @@ GM2Player = {
     runtime.vm.runtime.emitProjectLoaded = function () {
       if (GM2Player.options.cloudProvider) {
         try {
-          vm.setCloudProvider(GM2Player.options.cloudProvider);
+          runtime.vm.setCloudProvider(GM2Player.options.cloudProvider);
         } catch (e) {
           console.warn("[GM2Player]: Failed to set specified cloud provider.");
         }
