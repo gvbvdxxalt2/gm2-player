@@ -324,7 +324,7 @@ class CloudProvider {
   }
 }
 var vm = GM2Player.runtime.vm;
-var websocketServerURL = "hvkgrg-9080.csb.app";
+var websocketServerURL = "";
 var provider = new CloudProvider(
   websocketServerURL,
   vm,
