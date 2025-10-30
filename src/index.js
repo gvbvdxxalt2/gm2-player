@@ -93,13 +93,6 @@ GM2Player = {
     if (this.playerStarted) {
       GM2Player.updateOptions();
     }
-    if (GM2Player.options.cloudProvider && GM2Player.runtime.vm) {
-      try {
-        GM2Player.runtime.vm.setCloudProvider(GM2Player.options.cloudProvider);
-      } catch (e) {
-        console.warn("[GM2Player]: Failed to set specified cloud provider.");
-      }
-    }
   },
   colors: {
     BGColor: "black",
@@ -302,7 +295,7 @@ GM2Player = {
     };
 
     scaler.start(); //start the scaling loop.
-    runtime.vm.runtime.emitProjectLoaded = function () {
+    runtime.vm.runtime.on("PROJECT_LOADED", function () {
       setTimeout(() => {
         app.style.background = GM2Player.colors.BGColor;
         GM2Player.loaded = true;
@@ -319,7 +312,16 @@ GM2Player = {
           startProject();
         }
       }, 40);
-    };
+      if (GM2Player.options.cloudProvider && GM2Player.runtime.vm) {
+        try {
+          GM2Player.runtime.vm.setCloudProvider(
+            GM2Player.options.cloudProvider
+          );
+        } catch (e) {
+          console.warn("[GM2Player]: Failed to set specified cloud provider.");
+        }
+      }
+    });
     GM2Player.updateOptions();
     (async function () {
       await window.GM2PlayerFonts.loadFonts();
