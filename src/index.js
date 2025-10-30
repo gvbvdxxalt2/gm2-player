@@ -303,13 +303,6 @@ GM2Player = {
 
     scaler.start(); //start the scaling loop.
     runtime.vm.runtime.emitProjectLoaded = function () {
-      if (GM2Player.options.cloudProvider) {
-        try {
-          runtime.vm.setCloudProvider(GM2Player.options.cloudProvider);
-        } catch (e) {
-          console.warn("[GM2Player]: Failed to set specified cloud provider.");
-        }
-      }
       setTimeout(() => {
         app.style.background = GM2Player.colors.BGColor;
         GM2Player.loaded = true;
